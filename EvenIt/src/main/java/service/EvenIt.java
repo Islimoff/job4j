@@ -13,18 +13,20 @@ public class EvenIt implements Iterator<Integer> {
     }
 
     public boolean hasNext() {
+        boolean isEven = false;
         for (int i = index; i < numbers.length; i++) {
-            if ((numbers[i] & 1) == 0) {
-                return (numbers[i] & 1) == 0;
+            if ((numbers[i] % 2) == 0) {
+                isEven = true;
+                break;
             }
         }
-        return false;
+        return isEven;
     }
 
     public Integer next() {
         Integer element = null;
         while (numbers.length > index) {
-            if ((numbers[index] & 1) == 0) {
+            if ((numbers[index] % 2) == 0) {
                 element = numbers[index];
                 index++;
                 return element;
@@ -35,6 +37,6 @@ public class EvenIt implements Iterator<Integer> {
         throw new NoSuchElementException();
     }
 
-    public void remove()throws UnsupportedOperationException {
+    public void remove() throws UnsupportedOperationException {
     }
 }
